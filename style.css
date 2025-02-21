@@ -1,0 +1,40 @@
+body {
+  font-family: "Arial", sans-serif;
+  background: linear-gradient(red, blue);
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.container {
+  border-radius: 20px;
+  width: 60%;
+  box-shadow: 2px red;
+  padding: 15px;
+  color: white;
+  background: black;
+}
+
+button {
+  padding: 25px;
+  margin: 9px;
+  background-color: red;
+  border: 2px black solid;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+button:hover {
+  padding: 24px;
+  transform: translateY(1.5px);
+  background-color: orangered;
+}
+
+#result {
+  font-weight: 20px;
+  margin-top: 5px;
+  font-size: 20px;
+  color: orange;
+}

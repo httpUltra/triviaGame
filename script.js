@@ -1,28 +1,39 @@
-let questions = ["What planet is known as the 'Red Planet'?", "Who painted the Mona Lisa?"];
-let choices = ["Earth", "Mars", "Jupiter", "Saturn"];
-
-let choicesAr = [];
-let correctAnswers = ["Mars", "Leonardo da Vinci"];
+let questions = [
+  "What planet is known as the 'Red Planet'?",
+  "Who painted the Mona Lisa?",
+];
+let choicesArr = [
+  ["Earth", "Mars", "Jupiter", "Saturn"],
+  ["Van Gogh", "Picasso", "Da Vinci", "Rembrandt"],
+];
+let correctAnswers = ["Mars", "Da Vinci"];
 let currentQuestionIndex = 0;
+let score = 0;
 
 function checkAnswer(button) {
-    if (button.value === correctAnswers) {
-        document.getElementById("result").innerHTML = "CORRECT!!!";
-    } else {
-        document.getElementById("result").innerHTML = "WRONG!!!";
-    }
-    for (let i = 1; i < 5; i++) {
-        document.getElementById(`choice${i}`).disabled = true;
-    }
+  if (button.value === correctAnswers[currentQuestionIndex]) {
+    score++;
+  }
+  currentQuestionIndex++;
+  displayQuestion();
 }
 
 function displayQuestion() {
+  if (currentQuestionIndex < questions.length) {
     for (let i = 1; i < 5; i++) {
-        const btn = document.getElementById(`choice${i}`);
-        btn.innerHTML = choicesAr[currentQuestionIndex[i]];
-        btn.value = choicesAr[currentQuestionIndex[i]];
+      document.getElementById('question').innerHTML = questions[currentQuestionIndex];
+      const btn = document.getElementById(`choice${i}`);
+      btn.innerHTML = choicesArr[currentQuestionIndex][i - 1];
+      btn.value = choicesArr[currentQuestionIndex][i - 1];
     }
-    let edit = document.getElementById("question").innerHTML = questions[currentQuestionIndex];
-    edit.innerHTML = questions;
-    return questions;
+  } else {
+    document.getElementById("result").innerHTML =
+      `You got ${score} out of ${questions.length}`;
+    document.getElementById(`choice`).disabled = true;
+    document.getElementById(`choice`).innerHTML = "";
+    document.getElementById("question").innerHTML = "";
+  }
+  return questions;
 }
+
+displayQuestion();
